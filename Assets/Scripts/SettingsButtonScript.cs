@@ -15,7 +15,7 @@ public class SettingsButtonScript : MonoBehaviour
     {
         if (_IsMousePressed)
         {
-            SceneManager.LoadScene("Settings");
+            SceneManager.LoadScene("PlayMenu");
         }
     }
     
