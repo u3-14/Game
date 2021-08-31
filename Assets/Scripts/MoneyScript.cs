@@ -17,7 +17,6 @@ public class MoneyScript : MonoBehaviour
 
     private void Update()
     {
-        _MoneyCheck += 10000000000000000000;
         _text.text = _MoneyCheck.ToString();
     }
 }
