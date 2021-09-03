@@ -3,22 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonManager : MonoBehaviour
+public class GameButtonManager : MonoBehaviour
 {
-    public void Play()
+    public void L1()
     {
-        SceneManager.LoadScene("PlayMenu");
+        SceneManager.LoadScene("1Level");
     }
-    public void Shop()
+    public void L2()
     {
-        SceneManager.LoadScene("Shop");
+        SceneManager.LoadScene("2Level");
     }
-    public void Settings()
+    public void L3()
     {
-        SceneManager.LoadScene("Settings");
+        SceneManager.LoadScene("3Level");
     }
-    public void Exit()
+    public void L4()
     {
-        Application.Quit();
+        SceneManager.LoadScene("4Level");
+    }
+    public void L5()
+    {
+        SceneManager.LoadScene("5Level");
+    }
+    public void Back()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
