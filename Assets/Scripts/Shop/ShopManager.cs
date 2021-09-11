@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
     private int money = 0, skinNumber = 0;
-    public GameObject[] scins;
+    public int scins;
     public GameObject shop;
     private bool[] buyed;
     private bool a = true;
@@ -32,7 +33,7 @@ public class ShopManager : MonoBehaviour
 
     public void Right()
     {
-        if (skinNumber < scins.Length - 1 && a)
+        if (skinNumber < scins - 1 && a)
         {
             skinNumber++;
             StartCoroutine("ToRightCorutine");
@@ -82,5 +83,10 @@ public class ShopManager : MonoBehaviour
         }
 
         a = true;
+    }
+
+    public void GoBack()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
