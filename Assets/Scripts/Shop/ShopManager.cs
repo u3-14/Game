@@ -9,12 +9,17 @@ public class ShopManager : MonoBehaviour
     private int money = 0, skinNumber = 0;
     public int scins;
     public GameObject shop;
+    public GameObject[] YesP;
     private bool[] buyed;
     private bool a = true;
 
     private void Start()
     {
-        
+        foreach (var i in YesP)
+        {
+            i.SetActive(false);
+        }
+        YesP[0].SetActive(true);
     }
 
     private void Update()
@@ -26,7 +31,9 @@ public class ShopManager : MonoBehaviour
     {
         if (skinNumber > 0 && a)
         {
+            YesP[skinNumber].SetActive(false);
             skinNumber--;
+            YesP[skinNumber].SetActive(true);
             StartCoroutine("ToLeftCorutine");
         } 
     }
@@ -35,7 +42,9 @@ public class ShopManager : MonoBehaviour
     {
         if (skinNumber < scins - 1 && a)
         {
+            YesP[skinNumber].SetActive(false);
             skinNumber++;
+            YesP[skinNumber].SetActive(true);
             StartCoroutine("ToRightCorutine");
         } 
     }
@@ -53,13 +62,13 @@ public class ShopManager : MonoBehaviour
         {
             go.x -= .75f;
             shop.transform.position = go;
-            yield return null;
+            yield return .016f;
         }
         for (int i = 0; i < 20; i++)
         {
             go.x += .25f;
             shop.transform.position = go;
-            yield return null;
+            yield return .016f;
         }
 
         a = true;
@@ -73,13 +82,13 @@ public class ShopManager : MonoBehaviour
         {
             go.x += .75f;
             shop.transform.position = go;
-            yield return null;
+            yield return .016f;
         }
         for (int i = 0; i < 20; i++)
         {
             go.x -= .25f;
             shop.transform.position = go;
-            yield return null;
+            yield return .016f;
         }
 
         a = true;
