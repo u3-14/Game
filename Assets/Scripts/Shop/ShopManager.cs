@@ -10,7 +10,7 @@ public class ShopManager : MonoBehaviour
     public int scins;
     public GameObject shop;
     public GameObject[] YesP;
-    private bool[] buyed;
+    private bool[] bought;
     private bool a = true;
 
     private void Start()
@@ -20,11 +20,8 @@ public class ShopManager : MonoBehaviour
             i.SetActive(false);
         }
         YesP[0].SetActive(true);
-    }
-
-    private void Update()
-    {
         
+        bought = SaveSystem.LoadBuyingArray().boughtSkins;
     }
 
     public void Left()
@@ -51,7 +48,9 @@ public class ShopManager : MonoBehaviour
 
     public void Buy()
     {
-        
+       int ID = shop.transform.GetChild(skinNumber).GetChild(1).GetComponent<SkinData>().ID;
+       int price = shop.transform.GetChild(skinNumber).GetChild(1).GetComponent<SkinData>().price;
+       
     }
 
     IEnumerator ToRightCorutine()

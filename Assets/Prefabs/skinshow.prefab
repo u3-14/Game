@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033696487615502325}
   - component: {fileID: 2440995061617298779}
+  - component: {fileID: 932776893217279935}
   m_Layer: 0
   m_Name: scin
   m_TagString: Untagged
@@ -83,6 +84,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &932776893217279935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6890057578409497696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992f025e83d214d46ad5b9a9d5d41ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 100
+  ID: 2
 --- !u!1 &6912028229780290180
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +108,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3206727475503855146}
   - component: {fileID: 1773340347863851179}
+  - component: {fileID: 8771990165677052578}
+  - component: {fileID: 4192407375756632015}
   m_Layer: 0
   m_Name: BuyButton
   m_TagString: Untagged
@@ -166,6 +183,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &8771990165677052578
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6912028229780290180}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.013734639, y: -0.009156346}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.78, y: 1.1}
+    newSize: {x: 2.78, y: 1.1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.422903, y: 0.78868484}
+  m_EdgeRadius: 0
+--- !u!114 &4192407375756632015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6912028229780290180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd33234554c3394409aac0f1defd20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shop: {fileID: 0}
 --- !u!1 &7493950685916921486
 GameObject:
   m_ObjectHideFlags: 0
