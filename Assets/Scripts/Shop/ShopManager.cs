@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    private int money = 0, skinNumber = 0;
+    private int money, skinNumber = 0, scinID;
     public int scins;
-    public GameObject shop;
+    public GameObject shop, showScin, dressRoom;
     public GameObject[] YesP;
+    public Text gold;
     private bool[] bought;
     private bool a = true;
 
@@ -21,18 +24,46 @@ public class ShopManager : MonoBehaviour
         }
         YesP[0].SetActive(true);
         
+        money = SaveSystem.LoadMoney();
         bought = SaveSystem.LoadBuyingArray().boughtSkins;
+        scinID = SaveSystem.LoadScinID();
+        gold.text = money.ToString();
+        for (int i = 0; i < bought.Length; ++i)
+        {
+            if (bought[i])
+            {
+                shop.transform.GetChild(i).GetChild(0).GameObject().SetActive(false);
+                shop.transform.GetChild(i).GetChild(2).GameObject().SetActive(false);
+                shop.transform.GetChild(i).GetChild(3).GameObject().SetActive(true);
+                dressRoom.transform.GetChild(i).GetChild(1).GameObject().SetActive(false);
+            }
+            else
+            {
+                shop.transform.GetChild(i).GetChild(0).GameObject().SetActive(true);
+                shop.transform.GetChild(i).GetChild(2).GameObject().SetActive(false);
+                shop.transform.GetChild(i).GetChild(3).GameObject().SetActive(false);
+            }
+        }
+        shop.transform.GetChild(scinID).GetChild(0).GameObject().SetActive(false);
+        shop.transform.GetChild(scinID).GetChild(2).GameObject().SetActive(true);
+        shop.transform.GetChild(scinID).GetChild(3).GameObject().SetActive(false);
+        showScin.GetComponent<SpriteRenderer>().sprite = dressRoom.transform.GetChild(scinID).GetChild(0).GameObject()
+            .GetComponent<SpriteRenderer>().sprite;
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void Left()
     {
         if (skinNumber > 0 && a)
         {
-            YesP[skinNumber].SetActive(false);
-            skinNumber--;
+            YesP[skinNumber--].SetActive(false);
             YesP[skinNumber].SetActive(true);
             StartCoroutine("ToLeftCorutine");
-        } 
+        }
     }
 
     public void Right()
@@ -46,11 +77,55 @@ public class ShopManager : MonoBehaviour
         } 
     }
 
+    public void SelectScin(int ID)
+    {
+        shop.transform.GetChild(scinID).GetChild(2).GameObject().SetActive(false);
+        shop.transform.GetChild(scinID).GetChild(3).GameObject().SetActive(true);
+        
+        scinID = ID;
+        
+        showScin.GetComponent<SpriteRenderer>().sprite = dressRoom.transform.GetChild(scinID).GetChild(0).GameObject()
+            .GetComponent<SpriteRenderer>().sprite;
+        
+        shop.transform.GetChild(scinID).GetChild(3).GameObject().SetActive(false);
+        shop.transform.GetChild(scinID).GetChild(2).GameObject().SetActive(true);
+        
+        SaveSystem.SaveScinID(scinID);
+    }
+
     public void Buy()
     {
        int ID = shop.transform.GetChild(skinNumber).GetChild(1).GetComponent<SkinData>().ID;
        int price = shop.transform.GetChild(skinNumber).GetChild(1).GetComponent<SkinData>().price;
+
+       if (money >= price)
+       {
+           bought[ID] = true;
+
+           shop.transform.GetChild(scinID).GetChild(2).GameObject().SetActive(false);
+           shop.transform.GetChild(scinID).GetChild(3).GameObject().SetActive(true);
+
+           scinID = ID;
        
+           shop.transform.GetChild(scinID).GetChild(0).GameObject().SetActive(false);
+           shop.transform.GetChild(scinID).GetChild(2).GameObject().SetActive(true);
+
+           money -= price;
+           
+           dressRoom.transform.GetChild(scinID).GetChild(1).GameObject().SetActive(false);
+           showScin.GetComponent<SpriteRenderer>().sprite = dressRoom.transform.GetChild(scinID).GetChild(0).GameObject()
+               .GetComponent<SpriteRenderer>().sprite;
+           
+           SaveSystem.SaveScinID(ID);
+           SaveSystem.SaveBuyingArray(bought);
+           SaveSystem.SaveMoney(money);
+       }
+       else
+       {
+           shop.transform.GetChild(ID).GameObject().GetComponent<Animator>().SetTrigger("Tr");
+       }
+
+       gold.text = money.ToString();
     }
 
     IEnumerator ToRightCorutine()
@@ -95,6 +170,8 @@ public class ShopManager : MonoBehaviour
 
     public void GoBack()
     {
+        SaveSystem.SaveMoney(money);
+        SaveSystem.SaveBuyingArray(bought);
         SceneManager.LoadScene("Menu");
     }
 }
