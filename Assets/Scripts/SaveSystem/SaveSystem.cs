@@ -41,7 +41,7 @@ public static class SaveSystem {
             BinaryFormatter f = new BinaryFormatter();
             FileStream s = new FileStream(path, FileMode.Create);
 
-            SkinsData data = new SkinsData(new bool[]{true, false, false, false, false});
+            SkinsData data = new SkinsData(new bool[]{true, false, false, false, false, false, false, false, false});
         
             f.Serialize(s, data);
             s.Close();

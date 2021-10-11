@@ -79,6 +79,7 @@ public class ShopManager : MonoBehaviour
 
     public void SelectScin(int ID)
     {
+        Debug.Log(scinID);
         shop.transform.GetChild(scinID).GetChild(2).GameObject().SetActive(false);
         shop.transform.GetChild(scinID).GetChild(3).GameObject().SetActive(true);
         
@@ -95,8 +96,13 @@ public class ShopManager : MonoBehaviour
 
     public void Buy()
     {
-       int ID = shop.transform.GetChild(skinNumber).GetChild(1).GetComponent<SkinData>().ID;
+        int ID = shop.transform.GetChild(skinNumber).GetChild(1).GetComponent<SkinData>().ID;
        int price = shop.transform.GetChild(skinNumber).GetChild(1).GetComponent<SkinData>().price;
+
+       if (!bought[ID])
+       {
+           return;
+       }
 
        if (money >= price)
        {
