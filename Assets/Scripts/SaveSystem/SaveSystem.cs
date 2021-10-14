@@ -12,7 +12,7 @@ public static class SaveSystem {
     {
         BinaryFormatter f = new BinaryFormatter();
         
-        string path = Application.persistentDataPath + "/saves/boughtSkins.aboba";
+        string path = Application.persistentDataPath + "/boughtSkins.aboba";
         FileStream s = new FileStream(path, FileMode.Create);
 
         SkinsData data = new SkinsData(a);
@@ -23,7 +23,7 @@ public static class SaveSystem {
 
     public static SkinsData LoadBuyingArray()
     {
-        string path = Application.persistentDataPath + "/saves/boughtSkins.aboba";
+        string path = Application.persistentDataPath + "/boughtSkins.aboba";
 
         if (File.Exists(path))
         {
@@ -55,7 +55,7 @@ public static class SaveSystem {
     {
         BinaryFormatter f = new BinaryFormatter();
         
-        string path = Application.persistentDataPath + "/saves/money.aboba";
+        string path = Application.persistentDataPath + "/money.aboba";
         FileStream s = new FileStream(path, FileMode.Create);
 
         f.Serialize(s, m);
@@ -64,7 +64,7 @@ public static class SaveSystem {
     
     public static int LoadMoney()
     {
-        string path = Application.persistentDataPath + "/saves/money.aboba";
+        string path = Application.persistentDataPath + "/money.aboba";
 
         if (File.Exists(path))
         {
@@ -96,7 +96,7 @@ public static class SaveSystem {
     {
         BinaryFormatter f = new BinaryFormatter();
         
-        string path = Application.persistentDataPath + "/saves/ID.aboba";
+        string path = Application.persistentDataPath + "/ID.aboba";
         FileStream s = new FileStream(path, FileMode.Create);
 
         f.Serialize(s, m);
@@ -105,7 +105,7 @@ public static class SaveSystem {
     
     public static int LoadScinID()
     {
-        string path = Application.persistentDataPath + "/saves/ID.aboba";
+        string path = Application.persistentDataPath + "/ID.aboba";
 
         if (File.Exists(path))
         {

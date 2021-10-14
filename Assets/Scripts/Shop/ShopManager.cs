@@ -79,6 +79,12 @@ public class ShopManager : MonoBehaviour
 
     public void SelectScin(int ID)
     {
+        
+        if (!bought[ID])
+        {
+            return;
+        }
+        
         Debug.Log(scinID);
         shop.transform.GetChild(scinID).GetChild(2).GameObject().SetActive(false);
         shop.transform.GetChild(scinID).GetChild(3).GameObject().SetActive(true);
@@ -98,11 +104,6 @@ public class ShopManager : MonoBehaviour
     {
         int ID = shop.transform.GetChild(skinNumber).GetChild(1).GetComponent<SkinData>().ID;
        int price = shop.transform.GetChild(skinNumber).GetChild(1).GetComponent<SkinData>().price;
-
-       if (!bought[ID])
-       {
-           return;
-       }
 
        if (money >= price)
        {
@@ -138,17 +139,17 @@ public class ShopManager : MonoBehaviour
     {
         a = false;
         Vector3 go = new Vector3(shop.transform.position.x, shop.transform.position.y, shop.transform.position.z);
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < 10; i++)
         {
-            go.x -= .75f;
+            go.x -= 3f;
             shop.transform.position = go;
-            yield return .016f;
+            yield return null;
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
-            go.x += .25f;
+            go.x += 1f;
             shop.transform.position = go;
-            yield return .016f;
+            yield return null;
         }
 
         a = true;
@@ -158,17 +159,17 @@ public class ShopManager : MonoBehaviour
     {
         a = false;
         Vector3 go = new Vector3(shop.transform.position.x, shop.transform.position.y, shop.transform.position.z);
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < 10; i++)
         {
-            go.x += .75f;
+            go.x += 3f;
             shop.transform.position = go;
-            yield return .016f;
+            yield return null;
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
-            go.x -= .25f;
+            go.x -= 1f;
             shop.transform.position = go;
-            yield return .016f;
+            yield return null;
         }
 
         a = true;
