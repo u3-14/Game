@@ -305,7 +305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &259736000
 Transform:
   m_ObjectHideFlags: 0
@@ -465,6 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 423409754}
   - component: {fileID: 423409753}
+  - component: {fileID: 423409755}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -508,6 +509,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &423409755
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423409752}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0038496256, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.0119551
 --- !u!1 &482078667
 GameObject:
   m_ObjectHideFlags: 0
